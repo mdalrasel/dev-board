@@ -13,9 +13,11 @@ document.querySelectorAll(".completed-btn").forEach(button => {
             completedCount++;
 
             let activityLog = document.querySelector(".activity-log");
+            const card = this.closest(".task-card");
+            let taskTitle = card.querySelector(".card-title").innerHTML;
             let time = new Date().toLocaleTimeString();
             let logMessage = document.createElement("p");
-            logMessage.innerText = `You have completed a task at ${time}`;
+            logMessage.innerText = `You have Complete The Task ${taskTitle} at ${time}`;
             activityLog.appendChild(logMessage);
 
 
@@ -40,6 +42,27 @@ document.querySelectorAll(".completed-btn").forEach(button => {
         });
 });
 
-document.getElementById("clear-history").addEventListener("click", function(){
+document.getElementById("clear-history").addEventListener("click", function(event){
+    event.preventDefault()
     document.querySelector(".activity-log").innerHTML = "";
 })
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const button = document.getElementById("colorChangeBtn"); 
+    const body = document.body; 
+
+    button.addEventListener("click", function () {
+        const randomColor = getRandomColor(); 
+        body.style.backgroundColor = randomColor; 
+    });
+
+    function getRandomColor() {
+        const letters = "0123456789ABCDEF";
+        let color = "#";
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+});
