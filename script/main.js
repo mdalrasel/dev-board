@@ -25,9 +25,9 @@ document.querySelectorAll(".completed-btn").forEach(button => {
             const card = this.closest(".task-card");
             let taskTitle = card.querySelector(".card-title").innerHTML;
             let time = new Date().toLocaleTimeString();
-            let logMessage = document.createElement("p");
-            logMessage.innerText = `You have Complete The Task ${taskTitle} at ${time}`;
-            activityLog.appendChild(logMessage);
+            let log = document.createElement("p");
+            log.innerText = `You have Complete The Task ${taskTitle} at ${time}`;
+            activityLog.appendChild(log);
 
 
             let taskCount = document.getElementById("task-count");
@@ -60,10 +60,10 @@ document.getElementById("clear-history").addEventListener("click", function (eve
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    const button = document.getElementById("colorChangeBtn");
+    const randomColorBtn = document.getElementById("colorChangeBtn");
     const body = document.body;
 
-    button.addEventListener("click", function () {
+    randomColorBtn.addEventListener("click", function () {
         const randomColor = getRandomColor();
         body.style.backgroundColor = randomColor;
     });
