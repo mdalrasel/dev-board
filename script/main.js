@@ -1,9 +1,18 @@
-document.getElementById("date").innerText = new Date().toLocaleDateString();
-
 document.getElementById("blog").addEventListener("click",
     function () {
         window.location.href = "/Blog.html"
     })
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    let today = new Date();
+    let day = today.toLocaleDateString('en-US', { weekday: 'short' });
+    let date = today.toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' });
+    document.getElementById("day").innerText = day + ", ";
+    document.getElementById("date").innerText = date;
+});
+
 
 
 let completedCount = 0;
@@ -30,31 +39,33 @@ document.querySelectorAll(".completed-btn").forEach(button => {
             completedTotal.innerText = totalCompleted + 1;
 
             this.disabled = true;
-            
+
 
             if (completedCount % 6 === 0) {
-                alert("You have completed 6 tasks!");
-                alert("Great job! Keep going!");
+                alert("Board Updated Successfully");
+                alert("Congrats! You Have Completed All The Task.");
             } else {
-                alert("Task Completed!");
+                alert("Board Updated Successfully");
             }
 
         });
 });
 
-document.getElementById("clear-history").addEventListener("click", function(event){
+
+
+document.getElementById("clear-history").addEventListener("click", function (event) {
     event.preventDefault()
     document.querySelector(".activity-log").innerHTML = "";
 })
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    const button = document.getElementById("colorChangeBtn"); 
-    const body = document.body; 
+    const button = document.getElementById("colorChangeBtn");
+    const body = document.body;
 
     button.addEventListener("click", function () {
-        const randomColor = getRandomColor(); 
-        body.style.backgroundColor = randomColor; 
+        const randomColor = getRandomColor();
+        body.style.backgroundColor = randomColor;
     });
 
     function getRandomColor() {
